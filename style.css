@@ -1,0 +1,20 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/*imagem de fundo*/
+body{
+    background: url(https://garagem360.com.br/wp-content/uploads/2023/03/Ayrton-Senna-2.jpg);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.rowmundo{
+    color: rgb(255, 68, 0);
+    font-size: 60px;
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+}
