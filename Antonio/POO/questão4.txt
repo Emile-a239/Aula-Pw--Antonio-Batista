@@ -1,0 +1,228 @@
+//Antonio Batista Das Neves Neto 2a infor
+package material.abstrata;
+
+/**
+ * Classe Abstrata representando uma Pessoa.
+ */
+public abstract class Pessoa {
+  private String nome;
+
+  public Pessoa(String nome) {
+    this.nome = nome;
+  }
+
+  public String getNome() {
+    return nome;
+  }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
+}
+package br.encapsulamento;
+
+/**
+ * Classe utilizada para representar o Livro.
+ */
+public class Livro {
+    private String titulo;
+    private String autor;
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para representar o Funcionario.
+ */
+public class Funcionario {
+    private String nome;
+    private int matricula;
+    private String departamento;
+    
+    public Funcionario(String nome, int matricula, String departamento) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.departamento = departamento;
+    }
+
+    public int getMatricula() { return matricula; }
+    public void setMatricula(int matricula) { this.matricula = matricula; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getDepartamento() { return departamento; }
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para representar o Coordenador.
+ */
+public class Coordenador {
+    private String nome;
+    private int matricula;
+    private String cursoCoordenado;
+    
+    public Coordenador(String nome, int matricula, String cursoCoordenado) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.cursoCoordenado = cursoCoordenado;
+    }
+
+    public int getMatricula() { return matricula; }
+    public void setMatricula(int matricula) { this.matricula = matricula; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getCursoCoordenado() { return cursoCoordenado; }
+    public void setCursoCoordenado(String cursoCoordenado) {
+        this.cursoCoordenado = cursoCoordenado;
+    }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para representar a Pessoa.
+ */
+public class Pessoa {
+    private String nome;
+    private int matricula;
+    
+    /**
+     * Construtor que recebe o nome da pessoa.
+     *
+     * @param nome
+     */
+    public Pessoa(String nome, int matricula) {
+        this.nome = nome;
+        this.matricula = matricula;
+    }
+
+    public int getMatricula() { return matricula; }
+    public void setMatricula(int matricula) { this.matricula = matricula; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para representar um Funcionario que é uma Pessoa.
+ */
+public class Funcionario extends Pessoa {
+    private String departamento;
+    
+    public Funcionario(String nome, int matricula, String departamento) {
+        super(nome, matricula);
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento() { return departamento; }
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para representar um Coordenador que é uma Pessoa.
+ */
+public class Coordenador extends Pessoa {
+    private String cursoCoordenado;
+
+    public Coordenador(String nome, int matricula, String cursoCoordenado) {
+        super(nome, matricula);
+        this.cursoCoordenado = cursoCoordenado;
+    }
+
+    public String getCursoCoordenado() { return cursoCoordenado; }
+    public void setCursoCoordenado(String cursoCoordenado) {
+        this.cursoCoordenado = cursoCoordenado;
+    }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para testar a Herança da classe
+ * Funcionario.
+ */
+public class TesteFuncionario {
+    public static void main(String[] args) {
+        /* Declarações comuns. */
+        Pessoa camilo = new Pessoa("Camilo", 123);
+        Funcionario rafael = new Funcionario("Rafael", 111, "informatica");
+        
+        /* Todo Funcionario é uma Pessoa. */
+        Pessoa sakurai = new Funcionario("Sakurai", 222, "telecomunicação");
+        
+        /* Erro de compilação, porque nem toda
+           Pessoa é um Funcionario. */
+        Funcionario cristiano = new Pessoa("Cristiano", 456);
+    }
+}
+package material.heranca;
+
+/**
+ * Classe utilizada para representar um Coordenador que é uma Pessoa.
+ */
+public class Coordenador extends Pessoa {
+    private String cursoCoordenado;
+
+    public Coordenador(String nome, int matricula, String cursoCoordenado) {
+        super(nome, matricula);
+        this.cursoCoordenado = cursoCoordenado;
+    }
+
+    public String getCursoCoordenado() { return cursoCoordenado; }
+    public void setCursoCoordenado(String cursoCoordenado) {
+        this.cursoCoordenado = cursoCoordenado;
+    }
+}
+package material.polimorfismo;
+
+/**
+ * Classe utilizada para demonstrar o uso do polimorfismo,
+ * vamos criar duas variaveis do tipo Pessoa e adicionar nele objetos
+ * do tipo PessoaFisica e PessoaJuridica.
+ */
+public class TestePessoa4 {
+  public static void main(String[] args) {
+    Pessoa pessoa1 = new PessoaFisica();
+    pessoa1.setNome("Cristiano");
+
+    Pessoa pessoa2 = new PessoaJuridica();
+    pessoa2.setNome("Rafael");
+
+    Object objeto = "Programacao Orientada a Objetos";
+
+    PessoaFisica fisica = (PessoaFisica) pessoa1;
+    fisica.setCpf(12345678901L);
+
+    PessoaJuridica juridica = (PessoaJuridica) pessoa2;
+    juridica.setCnpj(1000100012345678L);
+
+    String texto = (String) objeto;
+
+    System.out.println(fisica.getNome());
+    System.out.println(juridica.getNome());
+    System.out.println(texto);
+  }
+}
